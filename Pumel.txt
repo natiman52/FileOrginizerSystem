@@ -1,0 +1,50 @@
+@startuml
+package com.aau.storagemanagment {
+  class MainApp
+  class Launcher
+  class LoginController
+  class SignupController
+  class MainController
+  class FileCard
+
+  package dao {
+    class UserDAO
+    class FileDAO
+  }
+
+  package db {
+    class DatabaseConnection
+  }
+
+  package model {
+    class User
+    class FileModel
+  }
+
+  package util {
+    class FileUtil
+    class NavigationUtil
+    class UserSession
+  }
+
+  MainApp ..> Launcher : uses
+  MainApp --> LoginController
+  MainApp --> MainController
+
+  LoginController --> UserDAO : uses
+  SignupController --> UserDAO : uses
+  MainController --> FileDAO : uses
+  MainController --> FileUtil : uses
+  MainController --> NavigationUtil : uses
+
+  UserDAO ..> DatabaseConnection : uses
+  FileDAO ..> DatabaseConnection : uses
+
+  UserDAO --> User : CRUD
+  FileDAO --> FileModel : CRUD
+
+  MainController --> FileCard : creates
+  LoginController --> UserSession : sets
+  MainController --> UserSession : reads
+}
+@enduml

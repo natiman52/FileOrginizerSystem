@@ -1,6 +1,9 @@
 package com.aau.storagemanagment.model;
 
-public class User {
+import java.util.Map;
+import java.util.HashMap;
+
+public class User extends AbstractModel {
     private int id;
     private String username;
     private String password;
@@ -17,4 +20,17 @@ public class User {
     public String getUsername() { return username; }
     public String getPassword() { return password; }
     public String getRole() { return role; }
+
+    @Override
+    public Object getIdentifier() { return id; }
+
+    @Override
+    public Map<String, Object> toMap() {
+        Map<String, Object> m = new HashMap<>();
+        m.put("id", id);
+        m.put("username", username);
+        m.put("password", password);
+        m.put("role", role);
+        return m;
+    }
 }

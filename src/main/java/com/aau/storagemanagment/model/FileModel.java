@@ -1,6 +1,9 @@
 package com.aau.storagemanagment.model;
 
-public class FileModel {
+import java.util.Map;
+import java.util.HashMap;
+
+public class FileModel extends AbstractModel {
     private String filepath;
     private String name;
     private long size;
@@ -26,4 +29,21 @@ public class FileModel {
 
     public void setName(String name) { this.name = name; }
     public void setCategory(String category) { this.category = category; }
+
+    @Override
+    public Object getIdentifier() {
+        return filepath;
+    }
+
+    @Override
+    public Map<String, Object> toMap() {
+        Map<String, Object> m = new HashMap<>();
+        m.put("filepath", filepath);
+        m.put("name", name);
+        m.put("size", size);
+        m.put("createdDate", createdDate);
+        m.put("category", category);
+        m.put("ownerId", ownerId);
+        return m;
+    }
 }
