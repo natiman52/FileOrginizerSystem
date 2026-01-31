@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+
+<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aau.storagemanagment.SignupController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="h1" text="Initial System Setup" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <Label fx:id="h2" text="Create Admin Account" style="-fx-font-size: 14px;"/>
+
+    <TextField fx:id="usernameField" promptText="Username" />
+    <PasswordField fx:id="passwordField" promptText="Password" />
+    <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" />
+    <HBox fx:id="myHBox" spacing="10">
+        <Button fx:id="button" text="Create Admin" onAction="#onSignupButtonClick" defaultButton="true" maxWidth="Infinity"/>
+    </HBox>
+
+    <Label fx:id="errorLabel" textFill="RED" />
+</VBox>
+
