@@ -5,17 +5,21 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import com.aau.storagemanagment.util.NavigationUtil;
+import com.aau.storagemanagment.dao.UserDAO;
 import java.io.IOException;
 
 public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+        NavigationUtil.setPrimaryStage(stage);
+        UserDAO userDAO = new UserDAO();
+
+        if (!userDAO.hasAdmin()) {
+            NavigationUtil.goToSignup();
+        } else {
+            NavigationUtil.goToLogin();
+        }
     }
 
     public static void main(String[] args) {
